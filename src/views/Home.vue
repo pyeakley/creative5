@@ -16,6 +16,11 @@
         </div>
       </div>
     </div>
+    <div class="contact">
+      <h2 class = "title">Contact Us</h2>
+      <p>You can get ahold of us at help.bullseyebakery@gmail.com</p>
+      <p class = "line2">Repository: https://github.com/pyeakley/creative3</p>
+    </div>
   </div>
 </template>
 
@@ -37,5 +42,8 @@ export default {
 </script>
 
 <style>
-
+.contact {
+  border-top: 1px solid #fd4345;
+  padding: 50px;
+}
 </style>

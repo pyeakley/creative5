@@ -11,6 +11,8 @@
     </div>
     <router-view />
   </div>
+
+
 </template>
 
 <style>
@@ -43,4 +45,9 @@
 #brand img {
   height: 200px;
 }
+.contact {
+  text-align: center;
+  padding: 20px;
+}
+
 </style>

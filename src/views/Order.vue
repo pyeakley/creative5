@@ -20,6 +20,11 @@
       <p>Thank you for your order, we will contact you once we are able to process it.</p>
       <p><a @click="toggleForm" href="#">Order again</a></p>
     </div>
+    <div class="contact">
+      <h2 class = "title">Contact Us</h2>
+      <p>You can get ahold of us at help.bullseyebakery@gmail.com</p>
+      <p class = "line2">Repository: https://github.com/pyeakley/creative3</p>
+    </div>
   </div>
 </template>
 
@@ -82,5 +87,10 @@ textarea {
 button {
   margin-top: 20px;
   font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.contact {
+  border-top: 1px solid #fd4345;
+  padding: 50px;
 }
 </style>
