@@ -1,18 +1,41 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <h1>Current Orders</h1>
+    <div v-for="order in orders" v-bind:key="order.id">
+      <hr>
+      <div class="order">
+        <div class="orderInfo">
+          <p><b>Name: </b>{{order.name}}</p>
+          <p><b>Phone number: </b>{{order.number}}</p>
+          <p><b>Email: </b>{{order.email}}</p>
+          <p><b>Additional details/requests:</b>{{order.additional}}</p>
+          <p><b>Item(s) Included:</b></p>
+          <div v-for="item in order.bag" v-bind:key="item.id">
+            <p>{{ item.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
+  data() {
+    return {}
   },
+  computed: {
+    orders() {
+      return this.$root.$data.getOrders();
+    },
+    orderItems(){
+      return this.$root.$data.getOrderItems();
+    }
+  }
 };
 </script>
+
+<style>
+
+</style>
