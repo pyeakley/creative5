@@ -23,12 +23,13 @@
     <div class="contact">
       <h2 class = "title">Contact Us</h2>
       <p>You can get ahold of us at help.bullseyebakery@gmail.com</p>
-      <p class = "line2">Repository: https://github.com/pyeakley/creative3</p>
+      <p class = "line2">Repository: https://github.com/pyeakley/creative4</p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import CookieOrder from "../components/CookieOrder.vue"
 export default {
   name: "Order",
@@ -48,14 +49,25 @@ export default {
     toggleForm() {
       this.creating = !this.creating;
     },
-    addOrder() {
-      this.$root.$data.addOrder(this.name, this.number, this.email, this.additional, this.$root.$data.orderItems);
-      this.name = "";
-      this.number = "";
-      this.email = "";
-      this.additional = "";
-      this.creating = false;
-      this.$root.$data.orderItems = [];
+    async addOrder() {
+      try {
+        await axios.post("/api/orders", {
+          name: this.name,
+          number: this.number,
+          email: this.email,
+          additional: this.additional,
+          bag: this.$root.$data.orderItems,
+        });
+        this.name = "";
+        this.number = "";
+        this.email = "";
+        this.additional = "";
+        this.creating = false;
+        this.$root.$data.orderItems = [];
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   computed: {
@@ -87,7 +99,6 @@ textarea {
 button {
   margin-top: 20px;
   font-size: 1.2em;
-  margin-bottom: 20px;
 }
 .contact {
   border-top: 1px solid #fd4345;
