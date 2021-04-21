@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>Logged in <button @click="logout" class="pure-button pure-button-primary">Logout</button></p>
     <h1>Create an Order Request</h1>
     <form v-if="creating" @submit.prevent="addOrder">
       <input v-model="name" placeholder="Name">
@@ -14,7 +15,7 @@
       <br />
       <p>Your order has {{ numberItems }} item(s) in it</p>
 
-      <button type="submit">Submit</button>
+      <button id="button1" type="submit">Submit</button>
     </form>
     <div v-else>
       <p>Thank you for your order, we will contact you once we are able to process it.</p>
@@ -69,6 +70,14 @@ export default {
         console.log(error);
       }
     },
+    async logout() {
+      try {
+        await axios.delete("/api/users");
+        this.$root.$data.user = null;
+      } catch (error) {
+        this.$root.$data.user = null;
+      }
+    },
   },
   computed: {
     cookies() {
@@ -96,7 +105,7 @@ textarea {
   height: 100px;
 }
 
-button {
+#button1 {
   margin-top: 20px;
   font-size: 1.2em;
 }
