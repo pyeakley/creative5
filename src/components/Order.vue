@@ -24,7 +24,7 @@
     <div class="contact">
       <h2 class = "title">Contact Us</h2>
       <p>You can get ahold of us at help.bullseyebakery@gmail.com</p>
-      <p class = "line2">Repository: https://github.com/pyeakley/creative4</p>
+      <p class = "line2">Repository: https://github.com/pyeakley/creative5   4 hours total</p>
     </div>
   </div>
 </template>
