@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -9,10 +11,9 @@ app.use(
   })
 );
 
-const mongoose = require("mongoose");
 
 // connect to the database
-mongoose.connect("mongodb://localhost:27017/creative4", {
+mongoose.connect("mongodb://localhost:27017/creative5", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
@@ -74,4 +75,9 @@ app.delete("/api/orders/:id", async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("Server listening on port 3001!"));
+// import the users module and setup its API path
+const users = require("./users.js");
+app.use("/api/users", users.routes);
+
+
+app.listen(3005, () => console.log("Server listening on port 3005!"));
